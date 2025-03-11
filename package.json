@@ -1,0 +1,25 @@
+{
+    "name": "cardano-marketplace",
+    "version": "1.0.0",
+    "description": "🇻🇳 Cardano App Development Course: A Step-by-Step Guide for Beginners - From basic Web development to use Cardano Libraries and interacting with Smart Contracts",
+    "main": "index.ts",
+    "directories": {
+        "lib": "lib",
+        "test": "tests"
+    },
+    "devDependencies": {
+        "@types/node": "^22.13.10"
+    },
+    "scripts": {
+        "test": "jest --runInBand",
+        "check:contract": "aiken check",
+        "build:contract": "aiken build"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@jest/globals": "^29.7.0",
+        "@meshsdk/core": "1.8.14",
+        "cbor": "^10.0.3"
+    }
+}

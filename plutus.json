@@ -1,0 +1,237 @@
+{
+  "preamble": {
+    "title": "marketplace/contract",
+    "description": "Aiken contracts for project 'marketplace/contract'",
+    "version": "0.0.0",
+    "plutusVersion": "v3",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.1.13+900bf91"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "marketplace.marketplace.spend",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/marketplace~1MarketplaceDatum"
+        }
+      },
+      "redeemer": {
+        "title": "redeemer",
+        "schema": {
+          "$ref": "#/definitions/marketplace~1MarketplaceRedeemer"
+        }
+      },
+      "compiledCode": "5906e401010029800aba2aba1aba0aab9faab9eaab9dab9a488888896600264653001300800198041804800cdc3a400530080024888966002600460106ea800e2653001300d00198069807000cdc3a400091119912cc004c00c0062b3001300f37540150028b20208acc004c0200062b3001300f37540150028b20208b201a40342b30013001300c37540051332259800980198071baa00a8992cc004c010c03cdd5000c4cc89660026644b30010018014566002603000314a3002405480a852819199119801001000912cc004006297ae0899912cc004cdd7980d180b9baa30063017375400400b13301900233004004001899802002000a02a3018001301900140586eb0c058c04cdd5005980a98091baa30013012375400513233223233001001323300100132598009806000c52f5bded8c113232330010014bd6f7b630112cc00400626603a66ec1301014000374c00697adef6c608994c004dd7180d800cdd5980e000cc0800092225980099b904890000389981099bb04c01014000374c00e00b15980099b8f4890000389981099bb04c01014000374c00e003133021337606ea400cdd300119803003000a03a4074301e0014070646600200297adef6c602259800800c4cc070cdd8261014000375000697adef6c608994c004dd7180d000cdd6980d800cc07c0092225980099b904890000389981019bb04c01014000375000e00b15980099b8f4890000389981019bb04c01014000375000e003133020337606ea400cdd400119803003000a0384070301d001406c80b0cdc01bad30063017375401530013756600c602e6ea8c018c05cdd5003d220100a44100400c44b30010018a5eb82264664466446600400400244b30010018801c4c8cc080dd3998101ba900533020301d00133020301e0014bd701980180198110011810000a03c375660360066eb8c060004cc00c00cc074008c06c005019112cc00400629462b300132337126eb4c018006600200b375c6036003375c600e0028020dd6180d000c4cc008008c06c00629410152030323322330020020012259800800c52f5bded8c1133225980099baf301b3018375400400b1329800800c00a6eacc020c064dd5001a0022225980080144006264664530010069811002cc8cc0040040148966002003133022337606ea4010dd3001a5eb7bdb1822653001375c604000337566042003302500248896600266e4002000e26604c66ec0dd48041ba60070058acc004cdc7804001c4c966002603260486ea800626604e66ec0dd4804981418129baa001002880120463259800acc004006294629410264530103d87a80008980b998139ba60014bd702046329800800c022006800888966002005100189919914c00401a605c00b32330010010052259800800c4cc0b8cdd81ba9004375000697adef6c608994c004dd71816000cdd69816800cc0c40092225980099b9000800389981919bb037520106ea001c0162b30013371e01000713259800981298181baa00189981999bb03752012606860626ea800400a20048178c966002604a00314c0103d87a800089811998199ba80014bd70205e3370000e005133032337606ea400cdd400119803003000a05c40b8302f00140b48030dd718138009bad3028001302a00240a1133026337606ea400cdd300119803003000a0444088302300140848030dd7180d8009bab301c001301e002407110014058603200266004004603400280b8dd61801180a1baa00c30163013375400c44464b300130103016375400314800226eb4c068c05cdd5000a02a32598009808180b1baa0018a6103d87a8000899198008009bab301b3018375400444b30010018a6103d87a8000899192cc004cdc8803000c56600266e3c0180062601a6603a603600497ae08a60103d87a80004065133004004301f00340646eb8c064004c07000501a202a32330010010042259800800c5300103d87a8000899192cc004cdc8803000c56600266e3c0180062601866038603400497ae08a60103d87a80004061133004004301e00340606eb8c060004c06c0050191180b180b980b800c528202030133010375400246028602a00316403864660020026eb0c04cc040dd5004112cc0040062980103d87a80008992cc004cdd7980a98091baa001008898021980a000a5eb82266006006602c0048080c05000501244c9660026008601e6ea800626466446600400400244b30010018a508acc004cdc79bae30160010038a51899801001180b800a02240506eb0c050c054c054c054c054c054c054c054c054c044dd50049bae30133010375400316403864b30013004300f3754003130023301230133010375400297ae08a6103d87a800040386024601e6ea8c048c03cdd5001201a3010300d37540046e9520008b2016300c37540103009375400716401c300800130033754011149a26cac8009",
+      "hash": "7a3d8723cb26983328c64f3f967efa500b8143afef64d6bb1dec4d74"
+    },
+    {
+      "title": "marketplace.marketplace.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "compiledCode": "5906e401010029800aba2aba1aba0aab9faab9eaab9dab9a488888896600264653001300800198041804800cdc3a400530080024888966002600460106ea800e2653001300d00198069807000cdc3a400091119912cc004c00c0062b3001300f37540150028b20208acc004c0200062b3001300f37540150028b20208b201a40342b30013001300c37540051332259800980198071baa00a8992cc004c010c03cdd5000c4cc89660026644b30010018014566002603000314a3002405480a852819199119801001000912cc004006297ae0899912cc004cdd7980d180b9baa30063017375400400b13301900233004004001899802002000a02a3018001301900140586eb0c058c04cdd5005980a98091baa30013012375400513233223233001001323300100132598009806000c52f5bded8c113232330010014bd6f7b630112cc00400626603a66ec1301014000374c00697adef6c608994c004dd7180d800cdd5980e000cc0800092225980099b904890000389981099bb04c01014000374c00e00b15980099b8f4890000389981099bb04c01014000374c00e003133021337606ea400cdd300119803003000a03a4074301e0014070646600200297adef6c602259800800c4cc070cdd8261014000375000697adef6c608994c004dd7180d000cdd6980d800cc07c0092225980099b904890000389981019bb04c01014000375000e00b15980099b8f4890000389981019bb04c01014000375000e003133020337606ea400cdd400119803003000a0384070301d001406c80b0cdc01bad30063017375401530013756600c602e6ea8c018c05cdd5003d220100a44100400c44b30010018a5eb82264664466446600400400244b30010018801c4c8cc080dd3998101ba900533020301d00133020301e0014bd701980180198110011810000a03c375660360066eb8c060004cc00c00cc074008c06c005019112cc00400629462b300132337126eb4c018006600200b375c6036003375c600e0028020dd6180d000c4cc008008c06c00629410152030323322330020020012259800800c52f5bded8c1133225980099baf301b3018375400400b1329800800c00a6eacc020c064dd5001a0022225980080144006264664530010069811002cc8cc0040040148966002003133022337606ea4010dd3001a5eb7bdb1822653001375c604000337566042003302500248896600266e4002000e26604c66ec0dd48041ba60070058acc004cdc7804001c4c966002603260486ea800626604e66ec0dd4804981418129baa001002880120463259800acc004006294629410264530103d87a80008980b998139ba60014bd702046329800800c022006800888966002005100189919914c00401a605c00b32330010010052259800800c4cc0b8cdd81ba9004375000697adef6c608994c004dd71816000cdd69816800cc0c40092225980099b9000800389981919bb037520106ea001c0162b30013371e01000713259800981298181baa00189981999bb03752012606860626ea800400a20048178c966002604a00314c0103d87a800089811998199ba80014bd70205e3370000e005133032337606ea400cdd400119803003000a05c40b8302f00140b48030dd718138009bad3028001302a00240a1133026337606ea400cdd300119803003000a0444088302300140848030dd7180d8009bab301c001301e002407110014058603200266004004603400280b8dd61801180a1baa00c30163013375400c44464b300130103016375400314800226eb4c068c05cdd5000a02a32598009808180b1baa0018a6103d87a8000899198008009bab301b3018375400444b30010018a6103d87a8000899192cc004cdc8803000c56600266e3c0180062601a6603a603600497ae08a60103d87a80004065133004004301f00340646eb8c064004c07000501a202a32330010010042259800800c5300103d87a8000899192cc004cdc8803000c56600266e3c0180062601866038603400497ae08a60103d87a80004061133004004301e00340606eb8c060004c06c0050191180b180b980b800c528202030133010375400246028602a00316403864660020026eb0c04cc040dd5004112cc0040062980103d87a80008992cc004cdd7980a98091baa001008898021980a000a5eb82266006006602c0048080c05000501244c9660026008601e6ea800626466446600400400244b30010018a508acc004cdc79bae30160010038a51899801001180b800a02240506eb0c050c054c054c054c054c054c054c054c054c044dd50049bae30133010375400316403864b30013004300f3754003130023301230133010375400297ae08a6103d87a800040386024601e6ea8c048c03cdd5001201a3010300d37540046e9520008b2016300c37540103009375400716401c300800130033754011149a26cac8009",
+      "hash": "7a3d8723cb26983328c64f3f967efa500b8143afef64d6bb1dec4d74"
+    }
+  ],
+  "definitions": {
+    "Int": {
+      "dataType": "integer"
+    },
+    "Option$cardano/address/StakeCredential": {
+      "title": "Option",
+      "anyOf": [
+        {
+          "title": "Some",
+          "description": "An optional value.",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/cardano~1address~1StakeCredential"
+            }
+          ]
+        },
+        {
+          "title": "None",
+          "description": "Nothing.",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        }
+      ]
+    },
+    "aiken/crypto/ScriptHash": {
+      "title": "ScriptHash",
+      "dataType": "bytes"
+    },
+    "aiken/crypto/VerificationKeyHash": {
+      "title": "VerificationKeyHash",
+      "dataType": "bytes"
+    },
+    "cardano/address/Address": {
+      "title": "Address",
+      "description": "A Cardano `Address` typically holding one or two credential references.\n\n Note that legacy bootstrap addresses (a.k.a. 'Byron addresses') are\n completely excluded from Plutus contexts. Thus, from an on-chain\n perspective only exists addresses of type 00, 01, ..., 07 as detailed\n in [CIP-0019 :: Shelley Addresses](https://github.com/cardano-foundation/CIPs/tree/master/CIP-0019/#shelley-addresses).",
+      "anyOf": [
+        {
+          "title": "Address",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "payment_credential",
+              "$ref": "#/definitions/cardano~1address~1PaymentCredential"
+            },
+            {
+              "title": "stake_credential",
+              "$ref": "#/definitions/Option$cardano~1address~1StakeCredential"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/address/Credential": {
+      "title": "Credential",
+      "description": "A general structure for representing an on-chain `Credential`.\n\n Credentials are always one of two kinds: a direct public/private key\n pair, or a script (native or Plutus).",
+      "anyOf": [
+        {
+          "title": "VerificationKey",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+            }
+          ]
+        },
+        {
+          "title": "Script",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1ScriptHash"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/address/PaymentCredential": {
+      "title": "PaymentCredential",
+      "description": "A general structure for representing an on-chain `Credential`.\n\n Credentials are always one of two kinds: a direct public/private key\n pair, or a script (native or Plutus).",
+      "anyOf": [
+        {
+          "title": "VerificationKey",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+            }
+          ]
+        },
+        {
+          "title": "Script",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1ScriptHash"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/address/StakeCredential": {
+      "title": "StakeCredential",
+      "description": "Represent a type of object that can be represented either inline (by hash)\n or via a reference (i.e. a pointer to an on-chain location).\n\n This is mainly use for capturing pointers to a stake credential\n registration certificate in the case of so-called pointer addresses.",
+      "anyOf": [
+        {
+          "title": "Inline",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/cardano~1address~1Credential"
+            }
+          ]
+        },
+        {
+          "title": "Pointer",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": [
+            {
+              "title": "slot_number",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "transaction_index",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "certificate_index",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/assets/AssetName": {
+      "title": "AssetName",
+      "dataType": "bytes"
+    },
+    "cardano/assets/PolicyId": {
+      "title": "PolicyId",
+      "dataType": "bytes"
+    },
+    "marketplace/MarketplaceDatum": {
+      "title": "MarketplaceDatum",
+      "anyOf": [
+        {
+          "title": "MarketplaceDatum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "seller",
+              "$ref": "#/definitions/cardano~1address~1Address"
+            },
+            {
+              "title": "price",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "policy_id",
+              "$ref": "#/definitions/cardano~1assets~1PolicyId"
+            },
+            {
+              "title": "asset_name",
+              "$ref": "#/definitions/cardano~1assets~1AssetName"
+            }
+          ]
+        }
+      ]
+    },
+    "marketplace/MarketplaceRedeemer": {
+      "title": "MarketplaceRedeemer",
+      "anyOf": [
+        {
+          "title": "Buy",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        },
+        {
+          "title": "WithdrawOrUpdate",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        }
+      ]
+    }
+  }
+}
