@@ -114,6 +114,7 @@ export class MeshAdapter {
   };
 
   protected getAddressUTXOAsset = async (address: string, unit: string) => {
+    console.log("Fetching UTXOs for address: ", address, unit);
     const utxos = await this.fetcher.fetchAddressUTxOs(address, unit);
     return utxos[utxos.length - 1];
   };

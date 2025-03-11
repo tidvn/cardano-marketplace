@@ -8,6 +8,8 @@ import {
   pubKeyAddress,
   deserializeDatum,
   serializeAddressObj,
+  parseAssetUnit,
+  mConStr1,
 } from "@meshsdk/core";
 import { MeshAdapter } from "./mesh";
 
@@ -17,23 +19,24 @@ export class MarketplaceContract extends MeshAdapter {
    *
    */
   sell = async ({
-    policyId,
-    assetName,
+    unit,
     price,
   }: {
-    policyId: string;
-    assetName: string;
+    unit: string;
     price: number;
   }): Promise<string> => {
     const { utxos, walletAddress, collateral } = await this.getWalletForTx();
     const { pubKeyHash, stakeCredentialHash } =
       deserializeAddress(walletAddress);
-
+    const { policyId, assetName } = parseAssetUnit(unit);
+    const nftUtxo = await this.getAddressUTXOAsset(walletAddress, unit);
+    if (!nftUtxo) throw new Error("NFT UTXO not found");
     const unsignedTx = this.meshTxBuilder
+      .spendingPlutusScriptV3()
       .txOut(this.marketplaceAddress, [
         {
           quantity: "1",
-          unit: policyId + assetName,
+          unit: unit,
         },
       ])
       .txOutInlineDatumValue(
@@ -55,7 +58,6 @@ export class MarketplaceContract extends MeshAdapter {
         collateral.output.address
       )
       .setNetwork("preview");
-
     return await unsignedTx.complete();
   };
 
@@ -63,17 +65,11 @@ export class MarketplaceContract extends MeshAdapter {
    * @method BUY
    *
    */
-  buy = async ({
-    policyId,
-    assetName,
-  }: {
-    policyId: string;
-    assetName: string;
-  }) => {
+  buy = async ({ unit }: { unit: string }) => {
     const { utxos, walletAddress, collateral } = await this.getWalletForTx();
     const marketplaceUtxo = await this.getAddressUTXOAsset(
       this.marketplaceAddress,
-      policyId + assetName
+      unit
     );
     if (!marketplaceUtxo) throw new Error("UTxO not found");
     const plutusData = marketplaceUtxo?.output?.plutusData as string;
@@ -102,7 +98,7 @@ export class MarketplaceContract extends MeshAdapter {
       ])
       .txOut(walletAddress, [
         {
-          unit: policyId + assetName,
+          unit: unit,
           quantity: "1",
         },
       ])
@@ -125,30 +121,21 @@ export class MarketplaceContract extends MeshAdapter {
    * @method WITHDRAW
    *
    */
-  withdraw = async ({
-    policyId,
-    assetName,
-  }: {
-    policyId: string;
-    assetName: string;
-  }) => {
+  withdraw = async ({ unit }: { unit: string }) => {
     const { utxos, walletAddress, collateral } = await this.getWalletForTx();
-    const utxo = await this.getAddressUTXOAsset(
-      this.marketplaceAddress,
-      policyId + assetName
-    );
+    const utxo = await this.getAddressUTXOAsset(this.marketplaceAddress, unit);
     console.log(utxo);
 
     const unsignedTx = await this.meshTxBuilder
       .spendingPlutusScriptV3()
       .txIn(utxo.input.txHash, utxo.input.outputIndex)
       .txInInlineDatumPresent()
-      .txInRedeemerValue(mConStr0([]))
+      .txInRedeemerValue(mConStr1([]))
       .txInScript(this.marketplaceScriptCbor)
 
       .txOut(walletAddress, [
         {
-          unit: policyId + assetName,
+          unit: unit,
           quantity: "1",
         },
       ])
@@ -169,40 +156,36 @@ export class MarketplaceContract extends MeshAdapter {
    * @method UPDATE
    *
    */
-  update = async ({
-    policyId,
-    assetName,
-    amount = 1,
-    price,
-  }: {
-    policyId: string;
-    assetName: string;
-    amount: number;
-    price: number;
-  }) => {
+  update = async ({ unit, newPrice }: { unit: string; newPrice: number }) => {
     const { utxos, walletAddress, collateral } = await this.getWalletForTx();
-    const utxo = await this.getAddressUTXOAsset(
-      this.marketplaceAddress,
-      policyId + assetName
-    );
-    const sellerPaymentKeyHash = deserializeAddress(walletAddress).pubKeyHash;
+    const utxo = await this.getAddressUTXOAsset(this.marketplaceAddress, unit);
+
+    const { pubKeyHash, stakeCredentialHash } =
+      deserializeAddress(walletAddress);
+    const { policyId, assetName } = parseAssetUnit(unit);
+
     const unsignedTx = await this.meshTxBuilder
       .spendingPlutusScriptV3()
       .txIn(utxo.input.txHash, utxo.input.outputIndex)
       .txInInlineDatumPresent()
-      .txInRedeemerValue(mConStr0([]))
+      .txInRedeemerValue(mConStr1([]))
       .txInScript(this.marketplaceScriptCbor)
 
       .txOut(walletAddress, [
         {
-          unit: policyId + assetName,
-          quantity: String(amount),
+          unit: unit,
+          quantity: "1",
         },
       ])
       .txOutInlineDatumValue(
-        mConStr0([policyId, assetName, sellerPaymentKeyHash, price])
+        conStr0([
+          pubKeyAddress(pubKeyHash, stakeCredentialHash),
+          integer(newPrice),
+          toPolicyId(policyId),
+          toAssetName(assetName),
+        ]),
+        "JSON"
       )
-
       .changeAddress(walletAddress)
       .requiredSignerHash(deserializeAddress(walletAddress).pubKeyHash)
       .selectUtxosFrom(utxos)
